@@ -59,7 +59,7 @@ This Document Management System (DMS) provides a secure, scalable REST API for s
 
 - **Backend**: Java 11, Spring Boot 2.7
 - **Security**: Spring Security, JWT
-- **Database**: PostgreSQL (configurable)
+- **Database**: H2 Databse, PostgreSQL (configurable)
 - **Build Tool**: Maven
 - **Documentation**: Swagger/OpenAPI
 - **Logging**: SLF4J, Logback
@@ -258,10 +258,12 @@ Key configuration properties in `application.properties`:
 server.port=8080
 
 # Database
-spring.datasource.url=jdbc:postgresql://localhost:5432/document_db
-spring.datasource.username=postgres
-spring.datasource.password=password
-spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:h2:mem:document_db
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
 
 # JWT
 app.jwtSecret=yourSecretKey
